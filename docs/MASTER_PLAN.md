@@ -324,3 +324,14 @@ Sicherheits- und Fairnessregeln:
 - Klare Anzeige, welche Risiken in einer Zone gelten.
 
 Die genaue Offline-Diebstahlregel und der Umfang von PvP bleiben vor Implementierung gesondert zu entscheiden.
+
+
+## 22. Narrative systems: quests, NPCs, factions and story
+
+EVERWORLD uses a multi-chapter main story, personal NPC arcs, side quests, profession contracts, faction quests, daily surprises and shared world events. Individual character decisions are stored separately from shared world flags. Shared outcomes can be driven by community projects, defined contribution rules, voting or owner-controlled events.
+
+The central mystery concerns the Great Fracture, the silent world-arter network and the Hollow Echo. The story supports several possible resolutions and continues in a persistent postgame after the main finale.
+
+NPCs have stable identities, schedules, dialogue variants, relationships, faction links, quest hooks and reactions to world state. Factions have distinct values and interests rather than simple good/evil alignment.
+
+The OWNER receives a World Control Center with a quest/story editor: create, test, publish, start, skip, complete or mark quests successful for a defined player, group or world scope; schedule daily surprises; trigger events; and manage story flags. High-impact changes require confirmation and an audit trail. The full narrative design, initial NPC cast, faction concepts, chapter structure and implementation phases are documented in [STORY_QUESTS_NPCS_FACTIONS.md](STORY_QUESTS_NPCS_FACTIONS.md).
