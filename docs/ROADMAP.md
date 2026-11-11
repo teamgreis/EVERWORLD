@@ -37,8 +37,10 @@ Roadmap items are ordered by dependency. Features may be re-estimated after each
 
 - [ ] Browser client shell
 - [ ] Phaser 3 canvas integration
+- [ ] Region/zone/exit/chunk data model
 - [ ] Isometric tilemap and collision layer
-- [ ] Initial Eldoria map
+- [ ] Initial Eldoria map split into small server-managed zones
+- [ ] Lazy chunk loading, adjacent-chunk preloading and bounded cache
 - [ ] Character sprite and animation
 - [ ] Keyboard movement
 - [ ] Touch movement controls
@@ -52,7 +54,9 @@ Roadmap items are ordered by dependency. Features may be re-estimated after each
 ## Phase 3 — Real multiplayer presence
 
 - [ ] Socket.IO authentication
-- [ ] Zone join/leave lifecycle
+- [ ] Zone join/leave lifecycle and idempotent handoff
+- [ ] Reconnect recovery to one authoritative zone
+- [ ] Spatial-grid interest management
 - [ ] Nearby player state
 - [ ] Movement synchronization
 - [ ] Disconnect timeout and cleanup
@@ -107,6 +111,7 @@ Roadmap items are ordered by dependency. Features may be re-estimated after each
 - [ ] Turn-based combat
 - [ ] Equipment and abilities
 - [ ] First dungeon
+- [ ] Instance lifecycle, access rules and cleanup
 - [ ] Group/party system
 
 **Exit criteria:** a small party can complete a dungeon and receive server-validated rewards.
