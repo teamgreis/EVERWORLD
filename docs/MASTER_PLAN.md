@@ -335,3 +335,47 @@ The central mystery concerns the Great Fracture, the silent world-arter network 
 NPCs have stable identities, schedules, dialogue variants, relationships, faction links, quest hooks and reactions to world state. Factions have distinct values and interests rather than simple good/evil alignment.
 
 The OWNER receives a World Control Center with a quest/story editor: create, test, publish, start, skip, complete or mark quests successful for a defined player, group or world scope; schedule daily surprises; trigger events; and manage story flags. High-impact changes require confirmation and an audit trail. The full narrative design, initial NPC cast, faction concepts, chapter structure and implementation phases are documented in [STORY_QUESTS_NPCS_FACTIONS.md](STORY_QUESTS_NPCS_FACTIONS.md).
+
+
+---
+
+## 18. Erweiterte Spielsysteme — verbindliche Designrichtung
+
+Die detaillierten Narrative- und Progressionsregeln stehen in:
+- `docs/ROLES_AND_PROFESSIONS.md`
+- `docs/STORY_QUESTS_NPCS_FACTIONS.md`
+
+Die folgenden Leitentscheidungen gelten für die weitere Entwicklung:
+
+### Rollen, Spezialisierungen und Berufe
+- Rollen, Spezialisierungen, Berufe und gesellschaftliche Ämter sind getrennte Systeme.
+- Charaktere dürfen mehrere Rollen und Berufe entwickeln und später wechseln.
+- Fortschritt bereits erlernter Rollen und Berufe bleibt beim Wechsel erhalten.
+- Die aktive Rolle bestimmt, welche exklusiven Fähigkeiten aktuell eingesetzt werden können.
+- Berufe erhalten eigene Fertigkeiten, Rezepte, Aufträge, Arbeitsplätze und Meisterschaftsstufen.
+- Spezialisierung schafft bessere Qualität und zusätzliche Lösungswege, aber keine dauerhaften Zugangssperren.
+
+### Kooperation und Spielerabhängigkeiten
+- Bestimmte komplexe Gegenstände, Weltprojekte und Dungeon-Mechaniken profitieren von mehreren Spezialisierungen.
+- Alternative Wege, öffentliche Werkstätten oder NPC-Dienstleistungen verhindern, dass Inhalte bei geringer Spielerzahl blockiert bleiben.
+- Der Server validiert alle Beiträge, Lieferungen, Gruppenfortschritte und Belohnungen.
+
+### Dynamische Story und Weltgedächtnis
+- Individuelle Questentscheidungen und globale Weltzustände werden getrennt gespeichert.
+- Quests unterstützen persönliche, Gruppen-, Gilden-, Stadt- und Welt-Scope.
+- Storykapitel besitzen mehrere Lösungswege und mögliche Endzustände.
+- Die Weltchronik dokumentiert wichtige globale Ereignisse.
+- Nach dem Hauptfinale geht die Welt in einen dauerhaften Freispielmodus über.
+
+### Tagesüberraschungen und Owner-Regie
+- Jeder Spieler kann einmal pro Spieltag eine passende Tagesüberraschung erhalten.
+- Überraschungen können Quests, Begegnungen, Gegenstände, Hinweise oder Gruppenereignisse sein.
+- Der Owner kann Überraschungen individuell, gruppenbezogen oder global planen und auslösen.
+- Der Owner kann Questziele erfüllen, Questinstanzen überspringen oder erfolgreich abschließen.
+- Owner-Overrides sind klar von normalem Spielerfortschritt getrennt, benötigen bei folgenreichen Änderungen Bestätigung und werden vollständig auditiert.
+- Admin- und Moderatorrechte verleihen nicht automatisch Owner-Weltkontrolle.
+
+### Kriminalität und Schutz
+- Diebstahl und Einbruch sind als optionale Spielpfade vorgesehen.
+- Sichere Zonen, Haus- und Lagerrechte, Beweissysteme, Wachen, Meldungen und Moderation begrenzen Missbrauch.
+- Offline-Spieler und ihre persönlichen Lager benötigen definierte Schutzregeln; die genaue PvP-/Diebstahl-Policy wird vor Implementierung festgelegt.
