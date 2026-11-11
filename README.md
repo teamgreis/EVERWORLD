@@ -24,6 +24,7 @@ Players need only a modern browser and the game URL. No native client, launcher 
 - [Inventory, items, loot and economy](docs/INVENTORY_ECONOMY.md)
 - [Performance and lean runtime standard](docs/PERFORMANCE_STANDARD.md)
 - [World, zones, map chunks and instances](docs/WORLD_ZONES_INSTANCING.md)
+- [Graphics quality and adaptive rendering](docs/GRAPHICS_QUALITY.md)
 
 - [Master plan and game design](docs/MASTER_PLAN.md)
 - [Roles, specializations and professions](docs/ROLES_AND_PROFESSIONS.md)
