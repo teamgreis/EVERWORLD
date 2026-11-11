@@ -222,3 +222,21 @@ Decision: clients receive only their current zone and relevant nearby state. Rea
 ### ADR-006: GitHub-driven deployment
 
 Decision: GitHub Actions builds and publishes the app image; server deploys the published image. Reason: reproducible builds and automatic updates without manually copying source files.
+
+
+## 13. Lean runtime and performance baseline
+
+The binding budgets and profiling gates are defined in `docs/PERFORMANCE_STANDARD.md`. The MVP deliberately uses one Node.js process, one PostgreSQL instance and the YunoHost reverse proxy. Redis, microservices and separate worker fleets are deferred until measurements justify them.
+
+Key implementation rules:
+- Load Phaser and world assets only when entering the game world.
+- Keep React for interface panels and Phaser for the world renderer.
+- Stream only the current zone and nearby entities.
+- Send movement intents at bounded rates and coalesce superseded updates.
+- Use snapshots on join/reconnect and incremental state deltas afterward.
+- Never persist every render-frame movement or run a timer loop per player.
+- Cache immutable content definitions; keep mutable player state authoritative.
+- Paginate large data sets, bound database pools and avoid N+1 queries.
+- Track bundle size, FPS, memory, event-loop lag, socket counts and query latency.
+
+Initial test target is 20 concurrent clients in one active zone on the Raspberry Pi 5, with measured resource use and latency. This is a validation target, not a capacity guarantee.
