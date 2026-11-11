@@ -108,3 +108,15 @@ Initial MVP test target: 20 concurrent connected clients in a single active zone
 Add Redis only when cross-process ephemeral coordination or measured cache pressure requires it. Add a worker process only when background work measurably affects request latency. Add a CDN only when asset delivery or geography justifies it. Split services only when independent scaling or fault isolation has a demonstrated need.
 
 **Rule:** The fastest architecture is usually the smallest architecture that meets the measured workload.
+
+
+## 11. Graphics quality and adaptive rendering
+
+The binding graphics profiles and visual acceptance criteria are defined in `docs/GRAPHICS_QUALITY.md`.
+
+- Auto, Low, High and Ultra profiles are supported as client-side rendering settings.
+- Auto adapts optional effects and render scale from sustained frame-time measurements.
+- Phaser renders the world; React renders application UI.
+- Graphics quality never changes authoritative gameplay rules or server simulation.
+- Advanced effects are optional and must be budgeted, measured and gracefully disabled.
+- The Raspberry Pi hosts the backend; player devices render the game.
