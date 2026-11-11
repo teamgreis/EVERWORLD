@@ -258,3 +258,11 @@ Implementation summary:
 ## 15. Combat model alignment
 
 The current gameplay direction is hybrid: real-time exploration and movement, with tactical/situational combat encounters. The server remains authoritative for combat outcomes. The encounter implementation may use discrete tactical resolution where appropriate, but the overall game should not be designed as exclusively turn-based combat.
+
+## 16. Graphics engine and adaptive quality
+
+Phaser 3 remains the 2D isometric rendering engine. It uses WebGL when available with a compatible fallback where supported. React remains responsible for the surrounding interface.
+
+The game exposes Auto, Low, High and Ultra graphics profiles. Auto uses device capability hints and sustained frame-time measurements to adapt optional effects and render scale. Manual profiles remain user-selectable. Rendering quality is client-side and must not change server-authoritative gameplay or increase server simulation work.
+
+The detailed art direction, profile matrix, adaptive controller, asset pipeline and validation gates are defined in [GRAPHICS_QUALITY.md](GRAPHICS_QUALITY.md).
