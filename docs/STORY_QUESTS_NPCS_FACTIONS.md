@@ -407,3 +407,234 @@ Vor der vollständigen Implementierung müssen noch entschieden werden:
 - Wie der Owner bei laufenden Gruppenquests Konflikte und bereits verteilte Belohnungen behandelt.
 
 Diese Fragen werden im weiteren Game-Design geklärt. Das Dokument legt die Grundarchitektur der Erzählung fest, nicht jeden einzelnen Dialog.
+
+
+---
+
+## 11. Quest-Design-Regeln und Zustandsmodell
+
+Quests werden als versionierte Datenobjekte modelliert, nicht als fest in den Client programmierte Dialogskripte.
+
+### Quest-Scope
+
+- **Personal:** Fortschritt gehört einem Charakter.
+- **Party:** Fortschritt gehört einer temporären Gruppe; individuelle Beiträge bleiben nachvollziehbar.
+- **Guild:** Fortschritt gehört einer Gilde oder einem autorisierten Gildenprojekt.
+- **City:** Fortschritt gehört einer Stadt und kann von vielen Spielern beigetragen werden.
+- **World:** Fortschritt verändert einen globalen Weltzustand.
+
+Ein Questziel muss explizit festlegen, ob es individuell, gemeinsam oder global zählt. Mehrfaches Auslösen desselben Ereignisses darf keinen doppelten Fortschritt oder doppelte Belohnungen erzeugen.
+
+### Zustandsmodell
+
+Eine Questinstanz verwendet mindestens diese Zustände:
+
+`AVAILABLE → ACTIVE → OBJECTIVES_COMPLETE → READY_TO_TURN_IN → COMPLETED`
+
+Zusätzliche Zustände sind `LOCKED`, `FAILED`, `ABANDONED` und `EXPIRED`. Owner-Overrides werden als separate administrative Ereignisse gespeichert und nicht als normale Spieleraktionen ausgegeben.
+
+### Questziele
+
+Unterstützte Zieltypen sollen modular sein:
+
+- Gegenstand sammeln, herstellen, liefern oder verwenden
+- NPC treffen, befragen, überzeugen oder retten
+- Ort entdecken, betreten oder kartografieren
+- Gegner besiegen, verschonen oder untersuchen
+- Mechanismus reparieren, sabotieren oder aktivieren
+- Dialogentscheidung treffen
+- Berufsstufe, Rollenfähigkeit oder Rezept nachweisen
+- Mit anderen Spielern handeln oder gemeinsam beitragen
+- Stadtprojekt finanzieren oder Material liefern
+- Beweis finden und eine Schlussfolgerung auswählen
+- Zeitfenster oder Ereignisbedingungen erfüllen
+- Alternative Lösungsroute auswählen
+
+### Quest-Belohnungen
+
+Belohnungen können aus Erfahrung, Währung, Gegenständen, Rezepten, Kosmetik, Ruf, Beziehungen, Zugängen, Titeln oder Weltzustandsänderungen bestehen. Belohnungen werden vor Veröffentlichung geprüft und serverseitig genau einmal verbucht.
+
+## 12. Ausgearbeitete Questketten
+
+### Questkette A — Ein Zuhause für den Anfang
+
+**Ziel:** Den Spieler in Eldoria ankommen lassen und die grundlegenden Lebenssysteme organisch vorstellen.
+
+1. **Ein Platz zum Ankommen:** Sera Dorn stellt den Spieler dem Stadtarchiv vor.
+2. **Ein Name im Register:** Maelin Voss legt einen Eintrag an und erklärt die Geschichte Eldorias.
+3. **Ein Dach über dem Kopf:** Taren Bruchstein hilft, ein kleines Haus oder Grundstück nutzbar zu machen.
+4. **Die erste Arbeit:** Der Spieler wählt einen Ausbildungsauftrag aus Handwerk, Natur, Handel oder Erkundung.
+5. **Ein unerwartetes Paket:** Eine Tagesüberraschung enthält einen Gegenstand, der nicht in die lokale Zeit passt.
+6. **Das Flackern:** Ein Weltader-Splitter reagiert in der Nähe des Hauses.
+
+Die Kette ist bewusst nicht kampflastig. Sie vermittelt Bewegung, Interaktion, Inventar, Dialog, Berufswahl, Haus und Tagesüberraschung.
+
+### Questkette B — Das Licht unter Eldoria
+
+**Ziel:** Den ersten größeren Storybogen mit Rollenabhängigkeiten und mehreren Lösungswegen eröffnen.
+
+1. Maelin bittet um alte Wartungsunterlagen.
+2. Ein Techniker erkennt, dass die Versorgung nicht mechanisch, sondern absichtlich getrennt wurde.
+3. Ein Arkanist liest eine Resonanz, die auf eine zweite Ebene des Knotens verweist.
+4. Ein Schattenläufer findet einen Zugang, der von außen nicht sichtbar ist.
+5. Ein Forscher ordnet die gefundenen Symbole einem der fünf Hüterhäuser zu.
+6. Die Gruppe erreicht den Knotenraum und muss entscheiden: stabilisieren, versiegeln oder zunächst beobachten.
+7. Das Ergebnis setzt ein lokales Weltflag und verändert Dialoge, kleine Dienste und spätere Questoptionen.
+
+Ein Solo-Spieler kann alternative Hilfsmittel, öffentliche Werkstätten oder NPC-Dienste nutzen. Eine Gruppe mit passenden Spezialisierungen erhält zusätzliche Erkenntnisse und bessere Effizienz.
+
+### Questkette C — Die verschwundene Lieferung
+
+**Ziel:** Kriminalität, Ermittlung, Handel und soziale Entscheidungen miteinander verbinden.
+
+1. Ein Kurier verschwindet samt einer Lieferung.
+2. Der Ermittler kann Beweise sichern; der Waldläufer findet Spuren außerhalb der Straße.
+3. Ein Händler kann anhand der Warenzeichen die Herkunft eingrenzen.
+4. Ein Schmuggler kann einen Kontakt vermitteln, verlangt dafür aber eine Gegenleistung.
+5. Die Spieler entdecken, dass die Lieferung absichtlich umgeleitet wurde, um eine arme Siedlung zu versorgen.
+6. Mögliche Lösungen: rechtmäßige Rückgabe, Kompromiss mit der Siedlung, geheime Unterstützung oder Übergabe an eine Fraktion.
+
+Die Quest bewertet nicht nur Erfolg, sondern auch gewählte Mittel. Ruf und Beziehungen reagieren entsprechend.
+
+### Questkette D — Die Stimme im Brunnen
+
+**Ziel:** Eine persönliche, geheimnisvolle NPC-Geschichte ohne Pflichtkampf.
+
+Ein alter Brunnen gibt nachts eine Stimme wieder, die Namen von Personen nennt, die niemand mehr kennt. Spieler sammeln Aussagen, alte Briefe und Erinnerungsstücke. Ein Seher erhält zusätzliche Hinweise; ein Chronist kann Widersprüche in der Stadtchronik erkennen; ein Barde kann ein vergessenes Lied rekonstruieren. Die Auflösung zeigt eine kleine, menschliche Folge des Großen Bruchs und liefert zugleich einen Hinweis auf das Hohle Echo.
+
+### Questkette E — Die Stadt braucht euch
+
+**Ziel:** Ein dauerhaftes Gemeinschaftsprojekt mit sichtbarer Weltveränderung.
+
+Spieler liefern Holz, Stein, Metallteile, Nahrung, Geld oder Spezialarbeit, um eine zerstörte Brücke wieder aufzubauen. Berufe liefern unterschiedliche Beiträge. Nach Erreichen definierter Meilensteine wird die Brücke sichtbar repariert, eine neue Route freigeschaltet und die Stadtchronik ergänzt. Beiträge werden transparent angezeigt; kleine Beiträge bleiben wertvoll und es gibt keine Pflicht, täglich online zu sein.
+
+## 13. NPC-Beziehungsmodell
+
+Jeder wichtige NPC kann pro Charakter eine Beziehung führen. Die Beziehung ist mehr als ein einzelner Freundschaftswert.
+
+Mögliche Dimensionen:
+- Vertrauen
+- Zuneigung / Vertrautheit
+- Respekt
+- Dankbarkeit
+- Misstrauen
+- Angst oder Konflikt
+
+Nicht jeder NPC nutzt alle Dimensionen. Dialoge und Angebote reagieren auf relevante Werte, Questflags und Weltzustände.
+
+### Beziehungspflege
+
+Mögliche Interaktionen sind Gespräche, passende Geschenke, Hilfe bei persönlichen Problemen, gemeinsame Aktivitäten, berufliche Aufträge und das Einhalten von Versprechen. Wiederholtes Spammen derselben Aktion erzeugt keine unbegrenzten Punkte.
+
+### NPC-Tagesabläufe
+
+NPCs können abhängig von Tageszeit und Ereignissen zwischen wenigen definierten Orten wechseln. Für die erste Version werden Zeitpläne datengetrieben und leichtgewichtig gehalten. Ein NPC muss nicht jede Minute simuliert werden. Der Server berechnet den relevanten Zustand bei Interaktion oder Zonenaktualisierung.
+
+### Persönliche Geschichten
+
+Wichtige NPCs erhalten jeweils:
+- einen Einstieg und eine erkennbare Persönlichkeit,
+- mindestens eine persönliche Questkette,
+- eine Beziehungskurve mit mehreren Dialogstufen,
+- einen Konflikt oder Wunsch,
+- eine Konsequenz, die nicht zwingend mit Geld oder Kampf gelöst wird.
+
+## 14. Fraktionsentwicklung und Politik
+
+Fraktionen besitzen neben Ruf und Quests auch interne Interessen und Einflussbereiche.
+
+Jede Fraktion kann folgende Daten führen:
+- öffentliche Ziele und geheime Ziele,
+- Mitglieder und Unterstützer,
+- Einfluss in einzelnen Städten,
+- Ressourcen und laufende Projekte,
+- Beziehungen zu anderen Fraktionen,
+- aktuelle Führung und interne Konflikte,
+- freigeschaltete Dienste und Questlinien.
+
+### Fraktionsrollen
+
+Mögliche Stufen sind Interessent, Unterstützer, Mitglied, Beauftragter und Vertrauensperson. Führungsämter werden gesondert vergeben und können durch Wahl, Ernennung oder Questleistung entstehen.
+
+### Stadtpolitik
+
+Städte können in späteren Entwicklungsphasen öffentliche Projekte, begrenzte Abstimmungen und gewählte Ämter anbieten. Abstimmungen benötigen klare Regeln zu Teilnahme, Fristen, Manipulationsschutz und Ergebnisdarstellung. Der Owner kann Regeln und Weltkanon festlegen, sollte Spielerentscheidungen aber transparent behandeln.
+
+## 15. Enden, Epilog und Freispiel
+
+Das Ende der Hauptgeschichte wird nicht allein durch eine einzelne letzte Dialogoption bestimmt. Es setzt sich aus mehreren Faktoren zusammen:
+
+- Zustand und Stabilität der wiederentdeckten Weltadern,
+- Einfluss und Beziehungen der Fraktionen,
+- gerettete oder verlorene Orte,
+- Vertrauen wichtiger NPCs,
+- abgeschlossene Gemeinschaftsprojekte,
+- entdeckte historische Beweise,
+- Entscheidungen in persönlichen Questketten.
+
+### Epilog
+
+Nach dem Finale erhält jeder Charakter einen persönlichen Epilog, der seine wichtigsten Entscheidungen, Beziehungen, Rollen, Berufe und Beiträge zusammenfasst. Die gemeinsame Welt erhält eine kanonische Chronik mit dem gewählten Ausgang.
+
+### Dauerhafter Freispielmodus
+
+Nach dem Finale bleibt die Welt spielbar:
+- Berufe und Rollen können weiter gemeistert werden.
+- Häuser, Werkstätten und Gilden können ausgebaut werden.
+- Städte erhalten wiederkehrende Projekte.
+- Dungeons bekommen optionale Herausforderungen und Varianten.
+- NPCs bieten neue persönliche und tägliche Geschichten.
+- Der Owner kann neue Kapitel, Regionen, Fraktionen und Ereignisse veröffentlichen.
+- Frühere Entscheidungen bleiben in der Weltchronik sichtbar.
+
+Der Freispielmodus darf nicht wie ein endloser Pflicht-Grind funktionieren. Er bietet neue Ziele, aber keine tägliche Anwesenheitspflicht.
+
+## 16. Owner World Control Center — Narrative Werkzeuge
+
+Der OWNER erhält eine gesonderte Regieoberfläche. Sie ist kein gewöhnliches Admin-Menü und darf nicht mit normalen Spielerrechten verwechselt werden.
+
+### Quest-Steuerung
+- Questinstanz eines Spielers oder einer Gruppe suchen.
+- Quest starten, pausieren, abbrechen oder zurücksetzen.
+- Einzelne Ziele als erfüllt markieren.
+- Quest als erfolgreich abschließen oder kontrolliert fehlschlagen lassen.
+- Voraussetzungen und Belohnungen prüfen.
+- Eine Quest für Testzwecke simulieren.
+- Manuelle Änderungen mit Begründung protokollieren.
+
+### Story- und Weltsteuerung
+- Kapitel und Storyphasen aktivieren oder pausieren.
+- Weltflags und regionale Zustände kontrolliert ändern.
+- Welt-Ereignisse planen, starten und beenden.
+- NPCs an Orte setzen oder Dialogzustände für Tests überschreiben.
+- Fraktionsruf und Einfluss korrigieren.
+- Eine globale Entscheidung für den kanonischen Weltverlauf festlegen.
+
+### Tagesüberraschungen
+- Überraschung für einen einzelnen Spieler, eine Gruppe oder alle Spieler planen.
+- Zielgruppe, Datum, Ablauf und Belohnung festlegen.
+- Zufallspool für einen Tag oder eine Region definieren.
+- Eine Überraschung sofort auslösen oder zurückziehen.
+- Vorschau anzeigen, bevor ein Ereignis veröffentlicht wird.
+
+### Sicherheits- und Auditregeln
+- Owner-Aktionen verlangen eine erneute Bestätigung bei besonders folgenreichen Änderungen.
+- Jede manuelle Änderung speichert Akteur, Zeit, Zielobjekt, vorherigen Zustand, neuen Zustand und Begründung.
+- Wo technisch möglich, gibt es einen Rückgängig- oder Kompensationsvorgang statt stillem Löschen.
+- Owner-Overrides sind in der Datenbank von regulärem Questfortschritt unterscheidbar.
+- Testaktionen können in einer separaten Testwelt erfolgen und dürfen nicht versehentlich Live-Belohnungen erzeugen.
+
+## 17. Inhaltsqualität und Veröffentlichung
+
+Jede Quest, NPC-Geschichte und jedes Welt-Ereignis durchläuft vor Veröffentlichung eine kurze Prüfung:
+
+1. Sind Voraussetzungen und Lösungswege verständlich?
+2. Gibt es mindestens einen gangbaren Weg ohne eine seltene Rolle?
+3. Sind Belohnungen und Kosten angemessen?
+4. Können Wiederholungen oder parallele Spieleraktionen duplizierte Belohnungen erzeugen?
+5. Werden betroffene Weltzustände und NPC-Reaktionen korrekt gesetzt?
+6. Gibt es eine klare Abbruch- und Wiederaufnahmebehandlung?
+7. Sind Dialoge und Ereignisse für neue Spieler verständlich?
+8. Kann der Owner den Inhalt testen und bei Fehlern zurücknehmen?
+
+**Leitregel:** Spezialisierung soll neue Möglichkeiten eröffnen, nicht anderen Spielern den Zugang zur gesamten Welt verwehren.
