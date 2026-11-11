@@ -23,6 +23,7 @@ Players need only a modern browser and the game URL. No native client, launcher 
 
 - [Master plan and game design](docs/MASTER_PLAN.md)
 - [Roles, specializations and professions](docs/ROLES_AND_PROFESSIONS.md)
+- [Story, quests, NPCs and factions](docs/STORY_QUESTS_NPCS_FACTIONS.md)
 - [Technical architecture](docs/TECHNICAL_ARCHITECTURE.md)
 - [Administration and security](docs/ADMIN_AND_SECURITY.md)
 - [Development roadmap](docs/ROADMAP.md)
