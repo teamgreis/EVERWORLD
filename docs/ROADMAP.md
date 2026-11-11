@@ -36,7 +36,11 @@ Roadmap items are ordered by dependency. Features may be re-estimated after each
 ## Phase 2 — First walkable world: Eldoria
 
 - [ ] Browser client shell
-- [ ] Phaser 3 canvas integration
+- [ ] Phaser 3 canvas integration with WebGL-first rendering and fallback
+- [ ] Low / High / Ultra graphics profiles and Auto default
+- [ ] Frame-time and memory instrumentation
+- [ ] Adaptive effects/render-scale controller
+- [ ] First polished Eldoria visual vertical slice
 - [ ] Region/zone/exit/chunk data model
 - [ ] Isometric tilemap and collision layer
 - [ ] Initial Eldoria map split into small server-managed zones
