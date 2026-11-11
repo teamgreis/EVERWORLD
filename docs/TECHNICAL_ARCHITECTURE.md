@@ -240,3 +240,21 @@ Key implementation rules:
 - Track bundle size, FPS, memory, event-loop lag, socket counts and query latency.
 
 Initial test target is 20 concurrent clients in one active zone on the Raspberry Pi 5, with measured resource use and latency. This is a validation target, not a capacity guarantee.
+
+
+## 14. World partitioning and streaming
+
+The detailed zone, map-chunk, interest-management, handoff and instance design is binding in [WORLD_ZONES_INSTANCING.md](WORLD_ZONES_INSTANCING.md).
+
+Implementation summary:
+- One persistent logical world is divided into server-managed zones.
+- Map chunks are client-loading units and do not define multiplayer or security boundaries.
+- Clients load the current and nearby chunks only.
+- The server tracks nearby entity visibility with a simple spatial grid.
+- Zone transitions are server-validated, idempotent and reconnect-safe.
+- Dungeons and private story spaces are isolated instances within the same application runtime.
+- Do not introduce distributed zone servers or Redis before profiling proves they are necessary.
+
+## 15. Combat model alignment
+
+The current gameplay direction is hybrid: real-time exploration and movement, with tactical/situational combat encounters. The server remains authoritative for combat outcomes. The encounter implementation may use discrete tactical resolution where appropriate, but the overall game should not be designed as exclusively turn-based combat.
