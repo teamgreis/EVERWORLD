@@ -179,7 +179,7 @@ The server validates party membership, encounter state, damage, rewards and comp
 
 ## 11. Combat and PvP
 
-The initial combat model is turn-based. This reduces synchronization complexity and supports strategic abilities, equipment and readable combat logs.
+The combat direction is hybrid: exploration and movement happen in real time; encounters use tactical, situational combat resolution with clear server authority. Not every encounter must run as continuous action combat. The server validates participant state, abilities, cooldowns, damage, effects, rewards and outcomes. This preserves responsive exploration while keeping combat readable and technically manageable.
 
 Combat participants have server-validated attributes, equipment, effects and cooldowns. The client cannot decide damage, hit results, rewards or battle outcomes.
 
@@ -379,3 +379,12 @@ Die folgenden Leitentscheidungen gelten für die weitere Entwicklung:
 - Diebstahl und Einbruch sind als optionale Spielpfade vorgesehen.
 - Sichere Zonen, Haus- und Lagerrechte, Beweissysteme, Wachen, Meldungen und Moderation begrenzen Missbrauch.
 - Offline-Spieler und ihre persönlichen Lager benötigen definierte Schutzregeln; die genaue PvP-/Diebstahl-Policy wird vor Implementierung festgelegt.
+
+
+## 23. Weltpartitionierung und Instanzen
+
+Die Welt bleibt logisch gemeinsam, wird technisch aber in Regionen, serververwaltete Zonen, ladbare Karten-Chunks und isolierte Instanzen gegliedert. Der Client lädt nur die aktuelle Umgebung und angrenzende Chunks. Der Server überträgt nur relevante nahe Entitäten statt den Zustand einer gesamten Stadt an alle Spieler zu senden.
+
+Zonenwechsel werden serverseitig validiert und idempotent ausgeführt. Dungeons und private Storybereiche sind Instanzen innerhalb derselben Anwendung, keine separaten Microservices. Die verbindlichen Details zu Koordinaten, Chunk-Laden, Sichtbarkeitsverwaltung, Zonenlebenszyklus, Übergängen, Instanzbereinigung und Kapazitätsgrenzen stehen in [WORLD_ZONES_INSTANCING.md](WORLD_ZONES_INSTANCING.md).
+
+Die ersten Chunk- und Zonengrößen sind konfigurierbare Startwerte und werden anhand realer Messungen angepasst. Eine feste Spielerzahl pro Zone wird vor Lasttests nicht versprochen.
