@@ -288,3 +288,39 @@ The first playable MVP is accepted when:
 9. The application can be deployed and updated without losing player data.
 
 This master plan is the binding product baseline. Detailed balancing, story content and visual assets may evolve without changing the core decisions above.
+
+
+## 19. Rollen, Berufe und gesellschaftliche Funktionen
+
+EVERWORLD verwendet getrennte Systeme für Rollen/Archetypen, Spezialisierungen, Berufe und gesellschaftliche Ämter. Ein Charakter kann beispielsweise Arkanist, Runenforscher, Alchemist und Mitglied einer Stadtorganisation sein.
+
+Rollen bestimmen besondere aktive Fähigkeiten und Interaktionsmöglichkeiten. Berufe entwickeln wirtschaftliche und handwerkliche Fertigkeiten unabhängig von der aktiven Rolle. Ämter wie Stadtwache, Ratsmitglied oder Gildenleitung vergeben klar begrenzte gesellschaftliche Rechte.
+
+Spieler können neue Rollen im Verlauf freischalten und zwischen erlernten Rollen wechseln. Fortschritt bleibt erhalten; aktive Fähigkeiten können an die ausgewählte Rolle gebunden sein. Berufe können parallel erlernt und gewechselt werden.
+
+Die Design-Bibliothek mit Kampf-, Magie-, Heimlichkeits-, Technik-, Natur- und Gesellschaftsrollen sowie umfangreichen Handwerks-, Natur-, Handels- und Dienstleistungsberufen steht in [ROLES_AND_PROFESSIONS.md](ROLES_AND_PROFESSIONS.md).
+
+Spezialisierung soll Kooperation fördern: Bestimmte hochwertige Gegenstände und Weltaktionen benötigen mehrere Kompetenzbereiche. Gleichzeitig müssen Alternativwege, NPC-Dienste und öffentliche Werkstätten verhindern, dass Inhalte durch Abwesenheit einzelner Spieler blockiert werden.
+
+## 20. Dynamische Story, Tagesüberraschungen und Owner-Kontrolle
+
+Die Hauptgeschichte besteht aus Kapiteln, Nebenquests, Fraktionshandlungen, individuellen Aufgaben und weltweiten Ereignissen. Entscheidungen können den Zustand von Städten, Fraktionen, NPC-Beziehungen und späteren Storykapiteln beeinflussen. Nach dem Finale bleibt die Welt im Freispielmodus aktiv.
+
+Jeder Spieltag kann eine Tagesüberraschung enthalten: Quest, Begegnung, Gegenstand, Händler, Entdeckung oder Welt-Ereignis. Überraschungen können individuell, rollen-/berufsbezogen, gruppenbezogen oder weltöffentlich sein. Sie dürfen keine tägliche Anwesenheit erzwingen.
+
+Der OWNER ist von ADMIN und MODERATOR getrennt und besitzt die höchste Spielberechtigung. Das World Control Center ermöglicht die Steuerung von Storykapiteln, Quests, Tagesüberraschungen, Rollen, Berufen, NPCs, Ereignissen und Weltzuständen. Quests können gestartet, übersprungen, abgeschlossen oder für definierte Spieler und Gruppen als erfolgreich markiert werden. Hochwirksame Änderungen werden revisionssicher protokolliert.
+
+## 21. Multiplayer, Diebstahl und Schutz
+
+Die gemeinsame Welt unterstützt Handel, Kooperation und – in klar definierten Regeln – Kriminalität und Diebstahl. Diebstahl kann beispielsweise Taschendiebstahl, Einbruch, Schmuggel oder Diebstahl ungesicherter Waren umfassen.
+
+Sicherheits- und Fairnessregeln:
+- Sichere Stadtbereiche und geschützte persönliche Lager.
+- Grundstücks- und Truhenberechtigungen.
+- Schlösser, Alarmanlagen und Schutzmechanismen.
+- Beweise, Fahndung, Wachen, Kopfgelder und Konsequenzen.
+- Keine dauerhafte Zerstörung des Spielerhauses oder Verlust des Accounts durch PvP.
+- Schutz vor wiederholter gezielter Belästigung und Spawn-Camping.
+- Klare Anzeige, welche Risiken in einer Zone gelten.
+
+Die genaue Offline-Diebstahlregel und der Umfang von PvP bleiben vor Implementierung gesondert zu entscheiden.
